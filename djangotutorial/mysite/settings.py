@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "polls.apps.PollsConfig",
+    "shop.apps.ShopConfig",
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
     "django.contrib.admin",
@@ -40,8 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
-    "shop.apps.ShopConfig",
+    "rest_framework"
 ]
 
 MIDDLEWARE = [
