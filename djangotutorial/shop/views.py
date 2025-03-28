@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import ProductForm
 from .models import Store, Product
 import plotly.express as px
 import pandas as pd
@@ -26,3 +27,16 @@ def product_report(request):
     graph = fig.to_html(full_html=False)
 
     return render(request, 'shop/report.html', {'graph': graph})
+
+def product_create_view(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('product_success')
+    else:
+        form = ProductForm()
+    return render(request, 'shop/product_form.html', {'form': form})
+
+def product_success(request):
+    return render(request, 'shop/product_success.html')
